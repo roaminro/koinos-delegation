@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package delegation_manager;
+
+// @description: transfer tokens
+// @read-only: false
+message transfer_arguments {
+
+}
+
+message transfer_result {
+    
+}

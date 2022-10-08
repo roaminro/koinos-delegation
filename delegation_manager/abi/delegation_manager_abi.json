@@ -1,0 +1,12 @@
+{
+    "methods": {
+        "transfer": {
+            "argument": "delegation_manager.transfer_arguments",
+            "return": "delegation_manager.transfer_result",
+            "description": ": transfer tokens",
+            "entry_point": 670398154,
+            "read_only": false
+        }
+    },
+    "types": "Cm4KJ2Fzc2VtYmx5L3Byb3RvL2RlbGVnYXRpb25fbWFuYWdlci5wcm90bxISZGVsZWdhdGlvbl9tYW5hZ2VyIhQKEnRyYW5zZmVyX2FyZ3VtZW50cyIRCg90cmFuc2Zlcl9yZXN1bHRiBnByb3RvMw=="
+}

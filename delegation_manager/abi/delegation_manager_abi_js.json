@@ -1,0 +1,25 @@
+{
+    "methods": {
+        "transfer": {
+            "argument": "delegation_manager.transfer_arguments",
+            "return": "delegation_manager.transfer_result",
+            "description": ": transfer tokens",
+            "entry_point": 670398154,
+            "read_only": false
+        }
+    },
+    "types": {
+        "nested": {
+            "delegation_manager": {
+                "nested": {
+                    "transfer_arguments": {
+                        "fields": {}
+                    },
+                    "transfer_result": {
+                        "fields": {}
+                    }
+                }
+            }
+        }
+    }
+}
