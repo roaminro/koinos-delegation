@@ -1,22 +1,59 @@
 {
     "methods": {
-        "transfer": {
-            "argument": "delegation_manager.transfer_arguments",
-            "return": "delegation_manager.transfer_result",
-            "description": ": transfer tokens",
-            "entry_point": 670398154,
+        "register_delegation_contract": {
+            "argument": "delegation_manager.register_delegation_contract_arguments",
+            "return": "delegation_manager.empty_result",
+            "description": "register a delegation contract for an address",
+            "entry_point": 401134182,
             "read_only": false
+        },
+        "get_delegation_contract": {
+            "argument": "delegation_manager.get_delegation_contract_arguments",
+            "return": "delegation_manager.get_delegation_contract_result",
+            "description": "get delegation contract of an address",
+            "entry_point": 3540849664,
+            "read_only": true
         }
     },
     "types": {
         "nested": {
             "delegation_manager": {
                 "nested": {
-                    "transfer_arguments": {
+                    "register_delegation_contract_arguments": {
+                        "fields": {
+                            "address": {
+                                "type": "bytes",
+                                "id": 1,
+                                "options": {
+                                    "(koinos.btype)": "ADDRESS"
+                                }
+                            }
+                        }
+                    },
+                    "empty_result": {
                         "fields": {}
                     },
-                    "transfer_result": {
-                        "fields": {}
+                    "get_delegation_contract_arguments": {
+                        "fields": {
+                            "address": {
+                                "type": "bytes",
+                                "id": 1,
+                                "options": {
+                                    "(koinos.btype)": "ADDRESS"
+                                }
+                            }
+                        }
+                    },
+                    "get_delegation_contract_result": {
+                        "fields": {
+                            "contract_id": {
+                                "type": "bytes",
+                                "id": 1,
+                                "options": {
+                                    "(koinos.btype)": "CONTRACT_ID"
+                                }
+                            }
+                        }
                     }
                 }
             }

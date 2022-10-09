@@ -2,12 +2,26 @@ syntax = "proto3";
 
 package delegation_manager;
 
-// @description: transfer tokens
-// @read-only: false
-message transfer_arguments {
+import "koinos/options.proto";
 
+// @description register a delegation contract for an address
+// @read-only false
+// @result empty_result
+message register_delegation_contract_arguments {
+    bytes address = 1 [(koinos.btype) = ADDRESS];
 }
 
-message transfer_result {
+message empty_result {
     
 }
+
+// @description get delegation contract of an address
+// @read-only true
+message get_delegation_contract_arguments {
+    bytes address = 1 [(koinos.btype) = ADDRESS];
+}
+
+message get_delegation_contract_result {
+    bytes contract_id = 1 [(koinos.btype) = CONTRACT_ID];
+}
+
