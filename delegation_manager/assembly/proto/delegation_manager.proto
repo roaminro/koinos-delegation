@@ -4,24 +4,75 @@ package delegation_manager;
 
 import "koinos/options.proto";
 
-// @description register a delegation contract for an address
+// @description register a delegation contract for an account
 // @read-only false
-// @result empty_result
+// @result empty_message
 message register_delegation_contract_arguments {
-    bytes address = 1 [(koinos.btype) = ADDRESS];
+    bytes account = 1 [(koinos.btype) = ADDRESS];
 }
 
-message empty_result {
-    
+message empty_message {
+
 }
 
-// @description get delegation contract of an address
+// @description add a delegation to an account
+// @read-only false
+// @result empty_message
+message add_delegation_arguments {
+    bytes from = 1 [(koinos.btype) = ADDRESS];
+    bytes to = 2 [(koinos.btype) = ADDRESS];
+    uint64 amount = 3 [jstype = JS_STRING];
+}
+
+// @description get delegation contract of an account
 // @read-only true
 message get_delegation_contract_arguments {
-    bytes address = 1 [(koinos.btype) = ADDRESS];
+    bytes account = 1 [(koinos.btype) = ADDRESS];
 }
 
 message get_delegation_contract_result {
-    bytes contract_id = 1 [(koinos.btype) = CONTRACT_ID];
+    delegation_contract contract = 1;
 }
 
+// @description get delegations from an account
+// @read-only true
+// @result get_delegations_result
+message get_delegations_from_arguments {
+    bytes account = 1 [(koinos.btype) = ADDRESS];
+}
+
+// @description get delegations to an account
+// @read-only true
+// @result get_delegations_result
+message get_delegations_to_arguments {
+    bytes account = 1 [(koinos.btype) = ADDRESS];
+}
+
+message get_delegations_result {
+    repeated delegation_result delegations = 1;
+}
+
+// @description get all delegations
+// @read-only true
+// @result get_delegations_result
+message get_all_delegations_arguments {
+}
+
+message delegation_result {
+    bytes account = 1 [(koinos.btype) = ADDRESS];
+    uint64 amount = 2 [jstype = JS_STRING];
+}
+
+message delegation_key {
+    bytes account1 = 1;
+    bytes account2 = 2;
+}
+
+message delegation {
+    uint64 amount = 1 [jstype = JS_STRING];
+}
+
+message delegation_contract {
+    bytes contract_id = 2 [(koinos.btype) = CONTRACT_ID];
+    uint64 rc_limit = 3 [jstype = JS_STRING];
+}

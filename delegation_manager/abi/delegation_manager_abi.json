@@ -2,18 +2,46 @@
     "methods": {
         "register_delegation_contract": {
             "argument": "delegation_manager.register_delegation_contract_arguments",
-            "return": "delegation_manager.empty_result",
-            "description": "register a delegation contract for an address",
+            "return": "delegation_manager.empty_message",
+            "description": "register a delegation contract for an account",
             "entry_point": 401134182,
+            "read_only": false
+        },
+        "add_delegation": {
+            "argument": "delegation_manager.add_delegation_arguments",
+            "return": "delegation_manager.empty_message",
+            "description": "add a delegation to an account",
+            "entry_point": 3954539375,
             "read_only": false
         },
         "get_delegation_contract": {
             "argument": "delegation_manager.get_delegation_contract_arguments",
             "return": "delegation_manager.get_delegation_contract_result",
-            "description": "get delegation contract of an address",
+            "description": "get delegation contract of an account",
             "entry_point": 3540849664,
+            "read_only": true
+        },
+        "get_delegations_from": {
+            "argument": "delegation_manager.get_delegations_from_arguments",
+            "return": "delegation_manager.get_delegations_result",
+            "description": "get delegations from an account",
+            "entry_point": 276543200,
+            "read_only": true
+        },
+        "get_delegations_to": {
+            "argument": "delegation_manager.get_delegations_to_arguments",
+            "return": "delegation_manager.get_delegations_result",
+            "description": "get delegations to an account",
+            "entry_point": 3389828174,
+            "read_only": true
+        },
+        "get_all_delegations": {
+            "argument": "delegation_manager.get_all_delegations_arguments",
+            "return": "delegation_manager.get_delegations_result",
+            "description": "get all delegations",
+            "entry_point": 956754142,
             "read_only": true
         }
     },
-    "types": "CsMCCidhc3NlbWJseS9wcm90by9kZWxlZ2F0aW9uX21hbmFnZXIucHJvdG8SEmRlbGVnYXRpb25fbWFuYWdlchoUa29pbm9zL29wdGlvbnMucHJvdG8iSAomcmVnaXN0ZXJfZGVsZWdhdGlvbl9jb250cmFjdF9hcmd1bWVudHMSHgoHYWRkcmVzcxgBIAEoDEIEgLUYBlIHYWRkcmVzcyIOCgxlbXB0eV9yZXN1bHQiQwohZ2V0X2RlbGVnYXRpb25fY29udHJhY3RfYXJndW1lbnRzEh4KB2FkZHJlc3MYASABKAxCBIC1GAZSB2FkZHJlc3MiRwoeZ2V0X2RlbGVnYXRpb25fY29udHJhY3RfcmVzdWx0EiUKC2NvbnRyYWN0X2lkGAEgASgMQgSAtRgFUgpjb250cmFjdElkYgZwcm90bzM="
+    "types": "CvIHCidhc3NlbWJseS9wcm90by9kZWxlZ2F0aW9uX21hbmFnZXIucHJvdG8SEmRlbGVnYXRpb25fbWFuYWdlchoUa29pbm9zL29wdGlvbnMucHJvdG8iSAomcmVnaXN0ZXJfZGVsZWdhdGlvbl9jb250cmFjdF9hcmd1bWVudHMSHgoHYWNjb3VudBgBIAEoDEIEgLUYBlIHYWNjb3VudCIPCg1lbXB0eV9tZXNzYWdlImYKGGFkZF9kZWxlZ2F0aW9uX2FyZ3VtZW50cxIYCgRmcm9tGAEgASgMQgSAtRgGUgRmcm9tEhQKAnRvGAIgASgMQgSAtRgGUgJ0bxIaCgZhbW91bnQYAyABKARCAjABUgZhbW91bnQiQwohZ2V0X2RlbGVnYXRpb25fY29udHJhY3RfYXJndW1lbnRzEh4KB2FjY291bnQYASABKAxCBIC1GAZSB2FjY291bnQiZQoeZ2V0X2RlbGVnYXRpb25fY29udHJhY3RfcmVzdWx0EkMKCGNvbnRyYWN0GAEgASgLMicuZGVsZWdhdGlvbl9tYW5hZ2VyLmRlbGVnYXRpb25fY29udHJhY3RSCGNvbnRyYWN0IkAKHmdldF9kZWxlZ2F0aW9uc19mcm9tX2FyZ3VtZW50cxIeCgdhY2NvdW50GAEgASgMQgSAtRgGUgdhY2NvdW50Ij4KHGdldF9kZWxlZ2F0aW9uc190b19hcmd1bWVudHMSHgoHYWNjb3VudBgBIAEoDEIEgLUYBlIHYWNjb3VudCJhChZnZXRfZGVsZWdhdGlvbnNfcmVzdWx0EkcKC2RlbGVnYXRpb25zGAEgAygLMiUuZGVsZWdhdGlvbl9tYW5hZ2VyLmRlbGVnYXRpb25fcmVzdWx0UgtkZWxlZ2F0aW9ucyIfCh1nZXRfYWxsX2RlbGVnYXRpb25zX2FyZ3VtZW50cyJPChFkZWxlZ2F0aW9uX3Jlc3VsdBIeCgdhY2NvdW50GAEgASgMQgSAtRgGUgdhY2NvdW50EhoKBmFtb3VudBgCIAEoBEICMAFSBmFtb3VudCJICg5kZWxlZ2F0aW9uX2tleRIaCghhY2NvdW50MRgBIAEoDFIIYWNjb3VudDESGgoIYWNjb3VudDIYAiABKAxSCGFjY291bnQyIigKCmRlbGVnYXRpb24SGgoGYW1vdW50GAEgASgEQgIwAVIGYW1vdW50IlsKE2RlbGVnYXRpb25fY29udHJhY3QSJQoLY29udHJhY3RfaWQYAiABKAxCBIC1GAVSCmNvbnRyYWN0SWQSHQoIcmNfbGltaXQYAyABKARCAjABUgdyY0xpbWl0YgZwcm90bzM="
 }

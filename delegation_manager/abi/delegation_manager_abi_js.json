@@ -2,16 +2,44 @@
     "methods": {
         "register_delegation_contract": {
             "argument": "delegation_manager.register_delegation_contract_arguments",
-            "return": "delegation_manager.empty_result",
-            "description": "register a delegation contract for an address",
+            "return": "delegation_manager.empty_message",
+            "description": "register a delegation contract for an account",
             "entry_point": 401134182,
+            "read_only": false
+        },
+        "add_delegation": {
+            "argument": "delegation_manager.add_delegation_arguments",
+            "return": "delegation_manager.empty_message",
+            "description": "add a delegation to an account",
+            "entry_point": 3954539375,
             "read_only": false
         },
         "get_delegation_contract": {
             "argument": "delegation_manager.get_delegation_contract_arguments",
             "return": "delegation_manager.get_delegation_contract_result",
-            "description": "get delegation contract of an address",
+            "description": "get delegation contract of an account",
             "entry_point": 3540849664,
+            "read_only": true
+        },
+        "get_delegations_from": {
+            "argument": "delegation_manager.get_delegations_from_arguments",
+            "return": "delegation_manager.get_delegations_result",
+            "description": "get delegations from an account",
+            "entry_point": 276543200,
+            "read_only": true
+        },
+        "get_delegations_to": {
+            "argument": "delegation_manager.get_delegations_to_arguments",
+            "return": "delegation_manager.get_delegations_result",
+            "description": "get delegations to an account",
+            "entry_point": 3389828174,
+            "read_only": true
+        },
+        "get_all_delegations": {
+            "argument": "delegation_manager.get_all_delegations_arguments",
+            "return": "delegation_manager.get_delegations_result",
+            "description": "get all delegations",
+            "entry_point": 956754142,
             "read_only": true
         }
     },
@@ -21,7 +49,7 @@
                 "nested": {
                     "register_delegation_contract_arguments": {
                         "fields": {
-                            "address": {
+                            "account": {
                                 "type": "bytes",
                                 "id": 1,
                                 "options": {
@@ -30,12 +58,37 @@
                             }
                         }
                     },
-                    "empty_result": {
+                    "empty_message": {
                         "fields": {}
+                    },
+                    "add_delegation_arguments": {
+                        "fields": {
+                            "from": {
+                                "type": "bytes",
+                                "id": 1,
+                                "options": {
+                                    "(koinos.btype)": "ADDRESS"
+                                }
+                            },
+                            "to": {
+                                "type": "bytes",
+                                "id": 2,
+                                "options": {
+                                    "(koinos.btype)": "ADDRESS"
+                                }
+                            },
+                            "amount": {
+                                "type": "uint64",
+                                "id": 3,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
+                            }
+                        }
                     },
                     "get_delegation_contract_arguments": {
                         "fields": {
-                            "address": {
+                            "account": {
                                 "type": "bytes",
                                 "id": 1,
                                 "options": {
@@ -46,11 +99,101 @@
                     },
                     "get_delegation_contract_result": {
                         "fields": {
-                            "contract_id": {
+                            "contract": {
+                                "type": "delegation_contract",
+                                "id": 1
+                            }
+                        }
+                    },
+                    "get_delegations_from_arguments": {
+                        "fields": {
+                            "account": {
                                 "type": "bytes",
                                 "id": 1,
                                 "options": {
+                                    "(koinos.btype)": "ADDRESS"
+                                }
+                            }
+                        }
+                    },
+                    "get_delegations_to_arguments": {
+                        "fields": {
+                            "account": {
+                                "type": "bytes",
+                                "id": 1,
+                                "options": {
+                                    "(koinos.btype)": "ADDRESS"
+                                }
+                            }
+                        }
+                    },
+                    "get_delegations_result": {
+                        "fields": {
+                            "delegations": {
+                                "rule": "repeated",
+                                "type": "delegation_result",
+                                "id": 1
+                            }
+                        }
+                    },
+                    "get_all_delegations_arguments": {
+                        "fields": {}
+                    },
+                    "delegation_result": {
+                        "fields": {
+                            "account": {
+                                "type": "bytes",
+                                "id": 1,
+                                "options": {
+                                    "(koinos.btype)": "ADDRESS"
+                                }
+                            },
+                            "amount": {
+                                "type": "uint64",
+                                "id": 2,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
+                            }
+                        }
+                    },
+                    "delegation_key": {
+                        "fields": {
+                            "account1": {
+                                "type": "bytes",
+                                "id": 1
+                            },
+                            "account2": {
+                                "type": "bytes",
+                                "id": 2
+                            }
+                        }
+                    },
+                    "delegation": {
+                        "fields": {
+                            "amount": {
+                                "type": "uint64",
+                                "id": 1,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
+                            }
+                        }
+                    },
+                    "delegation_contract": {
+                        "fields": {
+                            "contract_id": {
+                                "type": "bytes",
+                                "id": 2,
+                                "options": {
                                     "(koinos.btype)": "CONTRACT_ID"
+                                }
+                            },
+                            "rc_limit": {
+                                "type": "uint64",
+                                "id": 3,
+                                "options": {
+                                    "jstype": "JS_STRING"
                                 }
                             }
                         }

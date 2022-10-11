@@ -16,7 +16,17 @@ export function main(): i32 {
           ProtoNamespace.register_delegation_contract_arguments.decode
         );
       const res = c.register_delegation_contract(args);
-      retbuf = Protobuf.encode(res, ProtoNamespace.empty_result.encode);
+      retbuf = Protobuf.encode(res, ProtoNamespace.empty_message.encode);
+      break;
+    }
+
+    case 0xebb57b6f: {
+      const args = Protobuf.decode<ProtoNamespace.add_delegation_arguments>(
+        contractArgs.args,
+        ProtoNamespace.add_delegation_arguments.decode
+      );
+      const res = c.add_delegation(args);
+      retbuf = Protobuf.encode(res, ProtoNamespace.empty_message.encode);
       break;
     }
 
@@ -30,6 +40,47 @@ export function main(): i32 {
       retbuf = Protobuf.encode(
         res,
         ProtoNamespace.get_delegation_contract_result.encode
+      );
+      break;
+    }
+
+    case 0x107bb6e0: {
+      const args =
+        Protobuf.decode<ProtoNamespace.get_delegations_from_arguments>(
+          contractArgs.args,
+          ProtoNamespace.get_delegations_from_arguments.decode
+        );
+      const res = c.get_delegations_from(args);
+      retbuf = Protobuf.encode(
+        res,
+        ProtoNamespace.get_delegations_result.encode
+      );
+      break;
+    }
+
+    case 0xca0cac4e: {
+      const args = Protobuf.decode<ProtoNamespace.get_delegations_to_arguments>(
+        contractArgs.args,
+        ProtoNamespace.get_delegations_to_arguments.decode
+      );
+      const res = c.get_delegations_to(args);
+      retbuf = Protobuf.encode(
+        res,
+        ProtoNamespace.get_delegations_result.encode
+      );
+      break;
+    }
+
+    case 0x3906e8de: {
+      const args =
+        Protobuf.decode<ProtoNamespace.get_all_delegations_arguments>(
+          contractArgs.args,
+          ProtoNamespace.get_all_delegations_arguments.decode
+        );
+      const res = c.get_all_delegations(args);
+      retbuf = Protobuf.encode(
+        res,
+        ProtoNamespace.get_delegations_result.encode
       );
       break;
     }

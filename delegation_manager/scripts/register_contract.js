@@ -1,4 +1,4 @@
-const { Signer, Provider, Contract } = require('koilib');
+const { Signer, Provider, Contract, Serializer, utils } = require('koilib');
 const fs = require('fs');
 const path = require('path');
 
@@ -39,16 +39,18 @@ const main = async () => {
   });
 
   const { operation: registerOperation } = await delegationManagerContract.functions.register_delegation_contract({
-    address: USER_ADDR
+    account: USER_ADDR
   }, {
     signTransaction: false,
     sendTransaction: false
   });
 
-  const preparedTx = await signer.prepareTransaction({ operations: [
-    uploadOperation,
-    registerOperation,
-  ]});
+  const preparedTx = await signer.prepareTransaction({
+    operations: [
+      uploadOperation,
+      registerOperation,
+    ]
+  });
 
   const { transaction, receipt } = await signer.sendTransaction(preparedTx);
 

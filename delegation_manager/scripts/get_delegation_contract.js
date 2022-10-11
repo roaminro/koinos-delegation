@@ -1,4 +1,4 @@
-const { Signer, Provider, Contract } = require('koilib');
+const { Signer, Provider, Contract, utils } = require('koilib');
 const fs = require('fs');
 const path = require('path');
 
@@ -18,11 +18,29 @@ const main = async () => {
     abi
   });
 
-  const { result } = await delegationManagerContract.functions.get_delegation_contract({
-    address: USER_ADDR
+  // const { result: delegationContractInfo } = await delegationManagerContract.functions.get_delegation_contract({
+  //   account: USER_ADDR
+  // });
+
+  // console.log(delegationContractInfo);
+
+  const { result: delegationsFrom } = await delegationManagerContract.functions.get_delegations_from({
+    account: USER_ADDR
+    // account: '1EVnUPiUXLdymLHzubdgvUpVdxGPh8Kr6r'
   });
 
-  console.log(result);
+  console.log(delegationsFrom);
+
+  const { result: delegationsTo } = await delegationManagerContract.functions.get_delegations_to({
+    account: USER_ADDR
+    // account: '1EVnUPiUXLdymLHzubdgvUpVdxGPh8Kr6r'
+  });
+
+  console.log(delegationsTo);
+
+  // const { result: alldelegations } = await delegationManagerContract.functions.get_all_delegations();
+
+  // console.log(alldelegations);  
 };
 
 main()
