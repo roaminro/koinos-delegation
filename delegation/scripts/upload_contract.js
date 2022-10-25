@@ -2,7 +2,9 @@ const { Signer, Provider, Contract } = require('koilib');
 const fs = require('fs');
 const path = require('path');
 
-const DELEGATION_CONTRACT_WIF = '5JtFYDDTvPaajifKv794zJHigeZjD35DnhPPKizuFL53hTzDchv';
+const abi = require('../abi/delegation_abi.json');
+
+const DELEGATION_CONTRACT_WIF = '5KYeDLo1yqMcAVxm7X2eaFXwsUrfLs9h9uSc1MbGLzbfERKscmm';
 
 const main = async () => {
   const provider = new Provider('https://api.koinosblocks.com');
@@ -19,9 +21,11 @@ const main = async () => {
   });
 
   const { transaction, receipt } = await contract.deploy({
+    abi: fs.readFileSync(path.resolve(__dirname, '../abi/delegation.abi')).toString(),
     authorizesTransactionApplication: true,
     authorizesUploadContract: true,
-    authorizesCallContract: true
+    authorizesCallContract: true,
+    payer: '1Bf5W4LZ2FTmzPcA6d8QeLgAYmCKdZp2nN'
   });
 
   console.log(receipt);

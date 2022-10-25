@@ -1,7 +1,7 @@
 const { Signer, Provider, Contract, utils } = require('koilib');
 
-const USER_WIF = '5Hs4H2Ks2EyFZTMxkQprC5t54Xw5LRDoHRfyjedNNBJC4jcM1nU';
-const DELEGATION_CONTRACT_ADDR = '1LrDAuFejtNGnVuVhyrMgLo7N7XnUz12DK';
+const USER_WIF = '5KgE5Tfm7zuJ6q6tnUJVW93dCDiDDk5mgaffrRJSdwg5hQbDHGK';
+const DELEGATION_CONTRACT_ADDR = '1P3GbpJMcgXK7HtuE7kcPkSGS4J6TTARZZ';
 
 const main = async () => {
   const provider = new Provider('https://api.koinosblocks.com');
@@ -23,8 +23,9 @@ const main = async () => {
     to: '18VpN36TGrssknBaAbA68nuZFMebN8QDro',
     value: '1',
   }, {
+    rcLimit: '60000000',
     payer: DELEGATION_CONTRACT_ADDR,
-    payee: signer.address,
+    payee: signer.address
   });
 
   console.log(transaction, receipt);

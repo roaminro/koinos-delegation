@@ -1,0 +1,61 @@
+{
+    "methods": {
+        "increase_delegation": {
+            "argument": "delegation.increase_delegation_arguments",
+            "return": "delegation.empty_message",
+            "description": "increase a delegation to an account",
+            "entry-point": "0x8c4f0419",
+            "read-only": false
+        },
+        "decrease_delegation": {
+            "argument": "delegation.decrease_delegation_arguments",
+            "return": "delegation.empty_message",
+            "description": "decrease a delegation to an account",
+            "entry-point": "0xede583a0",
+            "read-only": false
+        },
+        "process_undelegations": {
+            "argument": "delegation.process_undelegations_arguments",
+            "return": "delegation.empty_message",
+            "description": "process undelegations",
+            "entry-point": "0xe1022d5c",
+            "read-only": false
+        },
+        "get_delegations_from": {
+            "argument": "delegation.get_delegations_from_arguments",
+            "return": "delegation.get_delegations_result",
+            "description": "get delegations from an account",
+            "entry-point": "0x107bb6e0",
+            "read-only": true
+        },
+        "get_delegations_to": {
+            "argument": "delegation.get_delegations_to_arguments",
+            "return": "delegation.get_delegations_result",
+            "description": "get delegations to an account",
+            "entry-point": "0xca0cac4e",
+            "read-only": true
+        },
+        "get_balance": {
+            "argument": "delegation.get_balance_arguments",
+            "return": "delegation.mana_balance",
+            "description": "get account balance",
+            "entry-point": "0x6111606c",
+            "read-only": true
+        },
+        "get_metadata": {
+            "argument": "delegation.get_metadata_arguments",
+            "return": "delegation.metadata_object",
+            "description": "get contract metadata",
+            "entry-point": "0xfcf7a68f",
+            "read-only": true
+        },
+        "consume_mana": {
+            "argument": "delegation.consume_mana_arguments",
+            "return": "delegation.empty_message",
+            "description": "consume mana",
+            "entry-point": "0x69febb38",
+            "read-only": false
+        }
+    },
+    "types": "CvEJCh9hc3NlbWJseS9wcm90by9kZWxlZ2F0aW9uLnByb3RvEgpkZWxlZ2F0aW9uGhRrb2lub3Mvb3B0aW9ucy5wcm90byIPCg1lbXB0eV9tZXNzYWdlImsKHWluY3JlYXNlX2RlbGVnYXRpb25fYXJndW1lbnRzEhgKBGZyb20YASABKAxCBIC1GAZSBGZyb20SFAoCdG8YAiABKAxCBIC1GAZSAnRvEhoKBmFtb3VudBgDIAEoBEICMAFSBmFtb3VudCJrCh1kZWNyZWFzZV9kZWxlZ2F0aW9uX2FyZ3VtZW50cxIYCgRmcm9tGAEgASgMQgSAtRgGUgRmcm9tEhQKAnRvGAIgASgMQgSAtRgGUgJ0bxIaCgZhbW91bnQYAyABKARCAjABUgZhbW91bnQiQQofcHJvY2Vzc191bmRlbGVnYXRpb25zX2FyZ3VtZW50cxIeCgdhY2NvdW50GAEgASgMQgSAtRgGUgdhY2NvdW50IkAKHmdldF9kZWxlZ2F0aW9uc19mcm9tX2FyZ3VtZW50cxIeCgdhY2NvdW50GAEgASgMQgSAtRgGUgdhY2NvdW50Ij4KHGdldF9kZWxlZ2F0aW9uc190b19hcmd1bWVudHMSHgoHYWNjb3VudBgBIAEoDEIEgLUYBlIHYWNjb3VudCJWChZnZXRfZGVsZWdhdGlvbnNfcmVzdWx0EjwKC2RlbGVnYXRpb25zGAEgAygLMhouZGVsZWdhdGlvbi5iYWxhbmNlX3Jlc3VsdFILZGVsZWdhdGlvbnMiNwoVZ2V0X2JhbGFuY2VfYXJndW1lbnRzEh4KB2FjY291bnQYASABKAxCBIC1GAZSB2FjY291bnQiGAoWZ2V0X21ldGFkYXRhX2FyZ3VtZW50cyIYChZjb25zdW1lX21hbmFfYXJndW1lbnRzIkwKDmJhbGFuY2VfcmVzdWx0Eh4KB2FjY291bnQYASABKAxCBIC1GAZSB2FjY291bnQSGgoGYW1vdW50GAIgASgEQgIwAVIGYW1vdW50Ij0KA2tleRIaCghhY2NvdW50MRgBIAEoDFIIYWNjb3VudDESGgoIYWNjb3VudDIYAiABKAxSCGFjY291bnQyInIKDG1hbmFfYmFsYW5jZRIcCgdiYWxhbmNlGAEgASgEQgIwAVIHYmFsYW5jZRIWCgRtYW5hGAIgASgEQgIwAVIEbWFuYRIsChBsYXN0X21hbmFfdXBkYXRlGAMgASgEQgIwAVIObGFzdE1hbmFVcGRhdGUiJQoHYmFsYW5jZRIaCgZhbW91bnQYASABKARCAjABUgZhbW91bnQihgIKD21ldGFkYXRhX29iamVjdBIyChJsYXN0X21hbmFfY29uc3VtZXIYASABKAxCBIC1GAZSEGxhc3RNYW5hQ29uc3VtZXISRwofYmFsYW5jZV9hdF9sYXN0X2hlYWRfYmxvY2tfdGltZRgCIAEoBEICMAFSGmJhbGFuY2VBdExhc3RIZWFkQmxvY2tUaW1lEkEKHG1hbmFfYXRfbGFzdF9oZWFkX2Jsb2NrX3RpbWUYAyABKARCAjABUhdtYW5hQXRMYXN0SGVhZEJsb2NrVGltZRIzChRsYXN0X2hlYWRfYmxvY2tfdGltZRgEIAEoBEICMAFSEWxhc3RIZWFkQmxvY2tUaW1lYgZwcm90bzMK5wMKHGtvaW5vcy9jaGFpbi9hdXRob3JpdHkucHJvdG8SDGtvaW5vcy5jaGFpbhoUa29pbm9zL29wdGlvbnMucHJvdG8iVQoLY2FsbF90YXJnZXQSJQoLY29udHJhY3RfaWQYASABKAxCBIC1GAZSCmNvbnRyYWN0SWQSHwoLZW50cnlfcG9pbnQYAiABKA1SCmVudHJ5UG9pbnQiiAEKE2F1dGhvcml6ZV9hcmd1bWVudHMSNAoEdHlwZRgBIAEoDjIgLmtvaW5vcy5jaGFpbi5hdXRob3JpemF0aW9uX3R5cGVSBHR5cGUSMgoEY2FsbBgCIAEoCzIZLmtvaW5vcy5jaGFpbi5jYWxsX3RhcmdldEgAUgRjYWxsiAEBQgcKBV9jYWxsIigKEGF1dGhvcml6ZV9yZXN1bHQSFAoFdmFsdWUYASABKAhSBXZhbHVlKlkKEmF1dGhvcml6YXRpb25fdHlwZRIRCg1jb250cmFjdF9jYWxsEAASGwoXdHJhbnNhY3Rpb25fYXBwbGljYXRpb24QARITCg9jb250cmFjdF91cGxvYWQQAkI0WjJnaXRodWIuY29tL2tvaW5vcy9rb2lub3MtcHJvdG8tZ29sYW5nL2tvaW5vcy9jaGFpbmIGcHJvdG8z"
+}

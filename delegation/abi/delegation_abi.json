@@ -1,4 +1,54 @@
 {
-    "methods": {},
-    "types": ""
+    "methods": {
+        "increase_delegation": {
+            "argument": "delegation.increase_delegation_arguments",
+            "return": "delegation.empty_message",
+            "description": "increase a delegation to an account",
+            "entry-point": 2353988633,
+            "read-only": false
+        },
+        "decrease_delegation": {
+            "argument": "delegation.decrease_delegation_arguments",
+            "return": "delegation.empty_message",
+            "description": "decrease a delegation to an account",
+            "entry-point": 3991241632,
+            "read-only": false
+        },
+        "process_undelegations": {
+            "argument": "delegation.process_undelegations_arguments",
+            "return": "delegation.empty_message",
+            "description": "process undelegations",
+            "entry-point": 3775016284,
+            "read-only": false
+        },
+        "get_delegations_from": {
+            "argument": "delegation.get_delegations_from_arguments",
+            "return": "delegation.get_delegations_result",
+            "description": "get delegations from an account",
+            "entry-point": 276543200,
+            "read-only": true
+        },
+        "get_delegations_to": {
+            "argument": "delegation.get_delegations_to_arguments",
+            "return": "delegation.get_delegations_result",
+            "description": "get delegations to an account",
+            "entry-point": 3389828174,
+            "read-only": true
+        },
+        "get_all_delegations": {
+            "argument": "delegation.get_all_delegations_arguments",
+            "return": "delegation.get_delegations_result",
+            "description": "get all delegations",
+            "entry-point": 956754142,
+            "read-only": true
+        },
+        "get_balance": {
+            "argument": "delegation.get_balance_arguments",
+            "return": "delegation.mana_balance",
+            "description": "get account balance",
+            "entry-point": 1628528748,
+            "read-only": true
+        }
+    },
+    "types": "Ct4JCh9hc3NlbWJseS9wcm90by9kZWxlZ2F0aW9uLnByb3RvEgpkZWxlZ2F0aW9uGhRrb2lub3Mvb3B0aW9ucy5wcm90byIPCg1lbXB0eV9tZXNzYWdlImsKHWluY3JlYXNlX2RlbGVnYXRpb25fYXJndW1lbnRzEhgKBGZyb20YASABKAxCBIC1GAZSBGZyb20SFAoCdG8YAiABKAxCBIC1GAZSAnRvEhoKBmFtb3VudBgDIAEoBEICMAFSBmFtb3VudCJrCh1kZWNyZWFzZV9kZWxlZ2F0aW9uX2FyZ3VtZW50cxIYCgRmcm9tGAEgASgMQgSAtRgGUgRmcm9tEhQKAnRvGAIgASgMQgSAtRgGUgJ0bxIaCgZhbW91bnQYAyABKARCAjABUgZhbW91bnQiQQofcHJvY2Vzc191bmRlbGVnYXRpb25zX2FyZ3VtZW50cxIeCgdhY2NvdW50GAEgASgMQgSAtRgGUgdhY2NvdW50IkAKHmdldF9kZWxlZ2F0aW9uc19mcm9tX2FyZ3VtZW50cxIeCgdhY2NvdW50GAEgASgMQgSAtRgGUgdhY2NvdW50Ij4KHGdldF9kZWxlZ2F0aW9uc190b19hcmd1bWVudHMSHgoHYWNjb3VudBgBIAEoDEIEgLUYBlIHYWNjb3VudCJWChZnZXRfZGVsZWdhdGlvbnNfcmVzdWx0EjwKC2RlbGVnYXRpb25zGAEgAygLMhouZGVsZWdhdGlvbi5iYWxhbmNlX3Jlc3VsdFILZGVsZWdhdGlvbnMiHwodZ2V0X2FsbF9kZWxlZ2F0aW9uc19hcmd1bWVudHMiNwoVZ2V0X2JhbGFuY2VfYXJndW1lbnRzEh4KB2FjY291bnQYASABKAxCBIC1GAZSB2FjY291bnQiTAoOYmFsYW5jZV9yZXN1bHQSHgoHYWNjb3VudBgBIAEoDEIEgLUYBlIHYWNjb3VudBIaCgZhbW91bnQYAiABKARCAjABUgZhbW91bnQiPQoDa2V5EhoKCGFjY291bnQxGAEgASgMUghhY2NvdW50MRIaCghhY2NvdW50MhgCIAEoDFIIYWNjb3VudDIicgoMbWFuYV9iYWxhbmNlEhwKB2JhbGFuY2UYASABKARCAjABUgdiYWxhbmNlEhYKBG1hbmEYAiABKARCAjABUgRtYW5hEiwKEGxhc3RfbWFuYV91cGRhdGUYAyABKARCAjABUg5sYXN0TWFuYVVwZGF0ZSIlCgdiYWxhbmNlEhoKBmFtb3VudBgBIAEoBEICMAFSBmFtb3VudCKGAgoPbWV0YWRhdGFfb2JqZWN0EjIKEmxhc3RfbWFuYV9jb25zdW1lchgBIAEoDEIEgLUYBlIQbGFzdE1hbmFDb25zdW1lchJHCh9iYWxhbmNlX2F0X2xhc3RfaGVhZF9ibG9ja190aW1lGAIgASgEQgIwAVIaYmFsYW5jZUF0TGFzdEhlYWRCbG9ja1RpbWUSQQocbWFuYV9hdF9sYXN0X2hlYWRfYmxvY2tfdGltZRgDIAEoBEICMAFSF21hbmFBdExhc3RIZWFkQmxvY2tUaW1lEjMKFGxhc3RfaGVhZF9ibG9ja190aW1lGAQgASgEQgIwAVIRbGFzdEhlYWRCbG9ja1RpbWViBnByb3RvMwrnAwoca29pbm9zL2NoYWluL2F1dGhvcml0eS5wcm90bxIMa29pbm9zLmNoYWluGhRrb2lub3Mvb3B0aW9ucy5wcm90byJVCgtjYWxsX3RhcmdldBIlCgtjb250cmFjdF9pZBgBIAEoDEIEgLUYBlIKY29udHJhY3RJZBIfCgtlbnRyeV9wb2ludBgCIAEoDVIKZW50cnlQb2ludCKIAQoTYXV0aG9yaXplX2FyZ3VtZW50cxI0CgR0eXBlGAEgASgOMiAua29pbm9zLmNoYWluLmF1dGhvcml6YXRpb25fdHlwZVIEdHlwZRIyCgRjYWxsGAIgASgLMhkua29pbm9zLmNoYWluLmNhbGxfdGFyZ2V0SABSBGNhbGyIAQFCBwoFX2NhbGwiKAoQYXV0aG9yaXplX3Jlc3VsdBIUCgV2YWx1ZRgBIAEoCFIFdmFsdWUqWQoSYXV0aG9yaXphdGlvbl90eXBlEhEKDWNvbnRyYWN0X2NhbGwQABIbChd0cmFuc2FjdGlvbl9hcHBsaWNhdGlvbhABEhMKD2NvbnRyYWN0X3VwbG9hZBACQjRaMmdpdGh1Yi5jb20va29pbm9zL2tvaW5vcy1wcm90by1nb2xhbmcva29pbm9zL2NoYWluYgZwcm90bzM="
 }

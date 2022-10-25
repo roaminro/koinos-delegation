@@ -1,3 +1,98 @@
 syntax = "proto3";
 
 package delegation;
+
+import "koinos/options.proto";
+
+message empty_message {
+
+}
+
+// @description increase a delegation to an account
+// @read-only false
+// @result empty_message
+message increase_delegation_arguments {
+    bytes from = 1 [(koinos.btype) = ADDRESS];
+    bytes to = 2 [(koinos.btype) = ADDRESS];
+    uint64 amount = 3 [jstype = JS_STRING];
+}
+
+// @description decrease a delegation to an account
+// @read-only false
+// @result empty_message
+message decrease_delegation_arguments {
+    bytes from = 1 [(koinos.btype) = ADDRESS];
+    bytes to = 2 [(koinos.btype) = ADDRESS];
+    uint64 amount = 3 [jstype = JS_STRING];
+}
+
+// @description process undelegations
+// @read-only false
+// @result empty_message
+message process_undelegations_arguments {
+    bytes account = 1 [(koinos.btype) = ADDRESS];
+}
+
+// @description get delegations from an account
+// @read-only true
+// @result get_delegations_result
+message get_delegations_from_arguments {
+    bytes account = 1 [(koinos.btype) = ADDRESS];
+}
+
+// @description get delegations to an account
+// @read-only true
+// @result get_delegations_result
+message get_delegations_to_arguments {
+    bytes account = 1 [(koinos.btype) = ADDRESS];
+}
+
+message get_delegations_result {
+    repeated balance_result delegations = 1;
+}
+
+// @description get account balance
+// @read-only true
+// @result mana_balance
+message get_balance_arguments {
+    bytes account = 1 [(koinos.btype) = ADDRESS];
+}
+
+// @description get contract metadata
+// @read-only true
+// @result metadata_object
+message get_metadata_arguments {
+}
+
+// @description consume mana
+// @read-only false
+// @result empty_message
+message consume_mana_arguments {
+}
+
+message balance_result {
+    bytes account = 1 [(koinos.btype) = ADDRESS];
+    uint64 amount = 2 [jstype = JS_STRING];
+}
+
+message key {
+    bytes account1 = 1;
+    bytes account2 = 2;
+}
+
+message mana_balance {
+    uint64 balance = 1 [jstype = JS_STRING];
+    uint64 mana = 2 [jstype = JS_STRING];
+    uint64 last_mana_update = 3 [jstype = JS_STRING];
+ }
+
+message balance {
+    uint64 amount = 1 [jstype = JS_STRING];
+}
+
+message metadata_object {
+    bytes last_mana_consumer = 1 [(koinos.btype) = ADDRESS];
+    uint64 balance_at_last_head_block_time = 2 [jstype = JS_STRING];
+    uint64 mana_at_last_head_block_time = 3 [jstype = JS_STRING];
+    uint64 last_head_block_time = 4 [jstype = JS_STRING];
+}

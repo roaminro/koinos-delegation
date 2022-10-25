@@ -1,60 +1,67 @@
 {
     "methods": {
         "increase_delegation": {
-            "argument": "delegation.increase_delegation_arguments",
-            "return": "delegation.empty_message",
+            "input": "delegation.increase_delegation_arguments",
+            "output": "delegation.empty_message",
             "description": "increase a delegation to an account",
-            "entry-point": 2353988633,
-            "read-only": false
+            "entryPoint": 2353988633,
+            "readOnly": false
         },
         "authorize": {
-            "argument": "koinos.chain.authorize_arguments",
-            "return": "koinos.chain.authorize_result",
+            "input": "koinos.chain.authorize_arguments",
+            "output": "koinos.chain.authorize_result",
             "description": "Check if authorized",
-            "entry-point": 1244511632,
+            "entryPoint": 1244511632,
             "read-only": false
         },
         "decrease_delegation": {
-            "argument": "delegation.decrease_delegation_arguments",
-            "return": "delegation.empty_message",
+            "input": "delegation.decrease_delegation_arguments",
+            "output": "delegation.empty_message",
             "description": "decrease a delegation to an account",
-            "entry-point": 3991241632,
-            "read-only": false
+            "entryPoint": 3991241632,
+            "readOnly": false
         },
         "process_undelegations": {
-            "argument": "delegation.process_undelegations_arguments",
-            "return": "delegation.empty_message",
+            "input": "delegation.process_undelegations_arguments",
+            "output": "delegation.empty_message",
             "description": "process undelegations",
-            "entry-point": 3775016284,
-            "read-only": false
+            "entryPoint": 3775016284,
+            "readOnly": false
         },
         "get_delegations_from": {
-            "argument": "delegation.get_delegations_from_arguments",
-            "return": "delegation.get_delegations_result",
+            "input": "delegation.get_delegations_from_arguments",
+            "output": "delegation.get_delegations_result",
             "description": "get delegations from an account",
-            "entry-point": 276543200,
-            "read-only": true
+            "entryPoint": 276543200,
+            "readOnly": true
         },
         "get_delegations_to": {
-            "argument": "delegation.get_delegations_to_arguments",
-            "return": "delegation.get_delegations_result",
+            "input": "delegation.get_delegations_to_arguments",
+            "output": "delegation.get_delegations_result",
             "description": "get delegations to an account",
-            "entry-point": 3389828174,
-            "read-only": true
-        },
-        "get_all_delegations": {
-            "argument": "delegation.get_all_delegations_arguments",
-            "return": "delegation.get_delegations_result",
-            "description": "get all delegations",
-            "entry-point": 956754142,
-            "read-only": true
+            "entryPoint": 3389828174,
+            "readOnly": true
         },
         "get_balance": {
-            "argument": "delegation.get_balance_arguments",
-            "return": "delegation.mana_balance",
+            "input": "delegation.get_balance_arguments",
+            "output": "delegation.mana_balance",
             "description": "get account balance",
-            "entry-point": 1628528748,
-            "read-only": true
+            "entryPoint": 1628528748,
+            "readOnly": true
+        },
+        "get_metadata": {
+            "input": "delegation.get_metadata_arguments",
+            "output": "delegation.metadata_object",
+            "description": "get contract metadata",
+            "entryPoint": 4244088463,
+            "readOnly": true
+        },
+        "consume_mana": {
+            "input": "delegation.consume_mana_arguments",
+            "output": "delegation.empty_message",
+            "description": "consume mana",
+            "entryPoint": 1778301752,
+            "readOnly": false
         }
     },
     "types": {
@@ -156,9 +163,6 @@
                             }
                         }
                     },
-                    "get_all_delegations_arguments": {
-                        "fields": {}
-                    },
                     "get_balance_arguments": {
                         "fields": {
                             "account": {
@@ -169,6 +173,12 @@
                                 }
                             }
                         }
+                    },
+                    "get_metadata_arguments": {
+                        "fields": {}
+                    },
+                    "consume_mana_arguments": {
+                        "fields": {}
                     },
                     "balance_result": {
                         "fields": {
@@ -216,7 +226,7 @@
                                     "jstype": "JS_STRING"
                                 }
                             },
-                            "last_mana_update": {
+                            "lastManaUpdate": {
                                 "type": "uint64",
                                 "id": 3,
                                 "options": {
@@ -238,28 +248,28 @@
                     },
                     "metadata_object": {
                         "fields": {
-                            "last_mana_consumer": {
+                            "lastManaConsumer": {
                                 "type": "bytes",
                                 "id": 1,
                                 "options": {
                                     "(koinos.btype)": "ADDRESS"
                                 }
                             },
-                            "balance_at_last_head_block_time": {
+                            "balanceAtLastHeadBlockTime": {
                                 "type": "uint64",
                                 "id": 2,
                                 "options": {
                                     "jstype": "JS_STRING"
                                 }
                             },
-                            "mana_at_last_head_block_time": {
+                            "manaAtLastHeadBlockTime": {
                                 "type": "uint64",
                                 "id": 3,
                                 "options": {
                                     "jstype": "JS_STRING"
                                 }
                             },
-                            "last_head_block_time": {
+                            "lastHeadBlockTime": {
                                 "type": "uint64",
                                 "id": 4,
                                 "options": {
@@ -286,14 +296,14 @@
                             },
                             "call_target": {
                                 "fields": {
-                                    "contract_id": {
+                                    "contractId": {
                                         "type": "bytes",
                                         "id": 1,
                                         "options": {
                                             "(btype)": "ADDRESS"
                                         }
                                     },
-                                    "entry-point": {
+                                    "entryPoint": {
                                         "type": "uint32",
                                         "id": 2
                                     }
