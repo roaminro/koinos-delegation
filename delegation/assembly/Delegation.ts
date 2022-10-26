@@ -96,27 +96,34 @@ export class Delegation {
     }
   }
 
+  max(a: u64, b: u64): u64 {
+    return a > b ? a : b;
+  }
+
+  min(a: u64, b: u64): u64 {
+    return a < b ? a : b;
+  }
+
   calculateConsumedMana(meta: delegation.metadata_object, balance: delegation.mana_balance, headBlockTime: u64): void {
     const currentMana = System.getAccountRC(this.contractId);
 
+    // if currentMana is bigger than meta.mana_at_last_head_block_time we don't need to consume mana as it has already regenerated fully
+    if (currentMana >= meta.mana_at_last_head_block_time) {
+      return;
+    }
+
     // calculate regenerated mana
     const elapsedTime = headBlockTime - meta.last_head_block_time;
-    const delta = elapsedTime < MANA_REGEN_TIME_MS ? elapsedTime : MANA_REGEN_TIME_MS;
-
+    const delta = this.min(elapsedTime, MANA_REGEN_TIME_MS);
     // @ts-ignore valid in AS
     const regeneratedMana = (u128.fromU64(delta) * u128.fromU64(meta.balance_at_last_head_block_time) / u128.fromU64(MANA_REGEN_TIME_MS)).toU64();
-    let consumedMana = meta.mana_at_last_head_block_time - currentMana + regeneratedMana;
-    consumedMana = consumedMana < 0 ? 0 : consumedMana;
+    
+    const consumedMana = meta.mana_at_last_head_block_time - currentMana + regeneratedMana;
 
-    System.log(`delta: ${delta.toString()}`);
-    System.log(`currentMana: ${currentMana.toString()}`);
-    System.log(`mana_at_last_head_block_time: ${meta.mana_at_last_head_block_time.toString()}`);
-    System.log(`balance_at_last_head_block_time: ${meta.balance_at_last_head_block_time.toString()}`);
-    System.log(`regeneratedMana: ${regeneratedMana.toString()}`);
-    System.log(`consumedMana: ${consumedMana.toString()}`);
+    System.log(`rc_used: ${consumedMana.toString()}`);
 
     // update mana
-    balance.mana = balance.mana < consumedMana ? 0 : balance.mana - consumedMana;
+    balance.mana = balance.mana - consumedMana;
   }
 
   consumeMana(): void {
@@ -146,12 +153,12 @@ export class Delegation {
 
     const elapsedTime = headBlockTime - balance.last_mana_update;
 
-    const delta = elapsedTime < MANA_REGEN_TIME_MS ? elapsedTime : MANA_REGEN_TIME_MS;
+    const delta = this.min(elapsedTime, MANA_REGEN_TIME_MS);
 
     if (delta) {
       // @ts-ignore valid in AS
       const newMana = balance.mana + (u128.fromU64(delta) * u128.fromU64(balance.balance) / u128.fromU64(MANA_REGEN_TIME_MS)).toU64();
-      balance.mana = newMana < balance.balance ? newMana : balance.balance;
+      balance.mana = this.min(newMana, balance.balance);
       balance.last_mana_update = headBlockTime;
     }
 
@@ -263,7 +270,7 @@ export class Delegation {
     const availableRc = System.getAccountRC(this.contractId);
 
     // calculate amount of KOIN that can be transfered
-    const transferAmount = availableRc < undeleg.amount ? availableRc : undeleg.amount;
+    const transferAmount = this.min(availableRc, undeleg.amount);
 
     // unlock KOIN
     System.require(this.koinContract.transfer(this.contractId, account, transferAmount), "could not unlock KOIN");
@@ -302,10 +309,7 @@ export class Delegation {
 
     if (Arrays.equal(meta.last_mana_consumer, account)) {
       const headBlockTime = System.getHeadInfo().head_block_time;
-      System.log(`before: ${manaBalance.mana.toString()}`);
       this.calculateConsumedMana(meta, manaBalance, headBlockTime);
-      System.log(`after: ${manaBalance.mana.toString()}`);
-
     }
 
     if (manaBalance.balance > 0) {
