@@ -230,7 +230,7 @@ export class Delegation {
     const delegKey = new delegation.key(from, to);
     const deleg = this.delegationsFrom.get(delegKey)!;
 
-    System.require(deleg.amount > amount, 'cannot decrease delegation');
+    System.require(deleg.amount >= amount, 'cannot undelegate more than the delegation');
 
     // undelegate tokens
     const undeleg = this.undelegations.get(from)!;

@@ -23,7 +23,7 @@ const main = async () => {
     to: '18VpN36TGrssknBaAbA68nuZFMebN8QDro',
     value: '1',
   }, {
-    rcLimit: '100000000',
+    rcLimit: '1000000000',
     payer: DELEGATION_CONTRACT_ADDR,
     payee: signer.address
   });
